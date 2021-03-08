@@ -1,0 +1,48 @@
+﻿@model AppUserAddViewModel
+@{
+    ViewData["Title"] = "KayitOl";
+    Layout = "~/Views/Shared/_StandartLayout.cshtml";
+}
+
+<form asp-action="KayitOl" method="post" class="mt-5 w-25 mx-auto p-3 shadow">
+    <div class="form-group"> <h4 class="text-center">Kayıt ol</h4></div>
+    <div class="form-group">
+        <label asp-for="Name">Adınız:</label>
+        <span asp-validation-for="Name" class="text-danger"></span>
+        <input asp-for="Name" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Surname">Soyadınız:</label>
+        <span asp-validation-for="Surname" class="text-danger"></span>
+        <input asp-for="Surname" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Emailiniz:</label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <input asp-for="Email" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password">Şifreniz:</label>
+        <span asp-validation-for="Password" class="text-danger"></span>
+        <input asp-for="Password" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword">Şifreniz:</label>
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        <input asp-for="ConfirmPassword" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserName">Kullanıcı Adı:</label>
+        <span asp-validation-for="UserName" class="text-danger"></span>
+        <input asp-for="UserName" class="form-control"/>
+    </div>
+    <div asp-validation-summary="ModelOnly" class="text-danger">
+
+    </div>
+
+    <a asp-action="Index" asp-controller="Home" class="btn btn-warning btn-sm">Vazgeç</a>
+    <button type="submit" class="btn btn-info btn-sm">Kayıt Ol</button>
+
+
+</form>
+
