@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using YSKProje.ToDo.Business.Concrete;
 using YSKProje.ToDo.Business.Interfaces;
 using YSKProje.ToDo.Entities.Concrete;
 using YSKProje.ToDo.Web.Areas.Admin.Models;
@@ -18,12 +19,13 @@ namespace YSKProje.ToDo.Web.Areas.Admin.Controllers
         private readonly IAppUserService _appUserService;
         private readonly IGorevService _gorevService;
         private readonly UserManager<AppUser> _userManager;
-
-        public IsEmriController(IAppUserService appUserService, IGorevService gorevService, UserManager<AppUser> userManager)
+        private readonly IDosyaService _dosyaService;
+        public IsEmriController(IAppUserService appUserService, IGorevService gorevService, UserManager<AppUser> userManager, IDosyaService dosyaService)
         {
             _appUserService = appUserService;
             _gorevService = gorevService;
             _userManager = userManager;
+            _dosyaService = dosyaService;
         }
 
         public IActionResult Index()
@@ -129,7 +131,8 @@ namespace YSKProje.ToDo.Web.Areas.Admin.Controllers
 
         public IActionResult Detaylandir(int id)
         {
-            var gorev= _gorevService.GetirRaporlarIdile(id);
+            TempData["Active"] = "isemri";
+            var gorev = _gorevService.GetirRaporlarIdile(id);
             GorevListAllViewModel model = new GorevListAllViewModel();
             model.Id = gorev.Id;
             model.Raporlar = gorev.Raporlar;
@@ -138,5 +141,16 @@ namespace YSKProje.ToDo.Web.Areas.Admin.Controllers
             model.AppUser = gorev.AppUser;
             return View(model);
         }
+
+        public IActionResult GetirExcel(int id)
+        {
+            return File(_dosyaService.AktarExcel(_gorevService.GetirRaporlarIdile(id).Raporlar), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", Guid.NewGuid() + ".xlsx");
+        }
+        public IActionResult GetirPdf(int id)
+        {
+            var path = _dosyaService.AktarPdf(_gorevService.GetirRaporlarIdile(id).Raporlar);
+            return File(path, "application/pdf", Guid.NewGuid() + ".pdf");
+        }
+
     }
 }

@@ -1,30 +1,31 @@
 ﻿@model AppUserSignInModel
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_StandartLayout.cshtml";
-}
+@{ ViewData["Title"] = "Index";
+                Layout = "~/Views/Shared/_StandartLayout.cshtml"; }
 
-  
-<form asp-action="GirisYap" method="post" class="mt-5 w-50 mx-auto p-4 shadow">
-    <div class="form-group">
-        <label asp-for="UserName"></label>
+
+<form asp-action="GirisYap" method="post" class="mt-4 w-50 mx-auto p-5 shadow">
+ 
+
+    <img src="~/img/tem2dogo.png" />
+    <div class="  form-group">
+        <label class="text-black-50 font-italic font-weight-bold" asp-for="UserName"></label>
         <span asp-validation-for="UserName" class="text-danger"></span>
-        <input asp-for="UserName" class="form-control" />
+        <input asp-for="UserName" class="form-control shadow" />
     </div>
     <div class="form-group">
-        <label asp-for="Password"></label>
+        <label class="text-black-50 font-italic font-weight-bold"  asp-for="Password"></label>
         <span asp-validation-for="Password" class="text-danger"></span>
-        <input asp-for="Password" class="form-control" />
+        <input asp-for="Password" class="form-control shadow" />
     </div>
     <div class="form-check">
-        <input type="checkbox" asp-for="RememberMe" class="form-check-input" />
-        <label asp-for="RememberMe" class="form-check-label"></label>
+        <input type="checkbox" asp-for="RememberMe" class="form-check-input shadow " />
+        <label class="text-black-50 font-weight-bold font-italic" asp-for="RememberMe" class="form-check-label "></label>
     </div>
     <div asp-validation-summary="ModelOnly" class="text-danger">
 
     </div>
 
-    <a asp-action="KayitOl" class="btn btn-warning btn-sm">Kayıt Ol</a>
-    <input type="submit" class="btn btn-info btn-sm" value="Giriş Yap" />
+    <a asp-action="KayitOl" class="btn btn-warning btn-sm p-1 shadow">Kayıt Ol</a>
+    <input type="submit" class="btn btn-info btn-sm p-1 shadow" value="Giriş Yap" />
 
 </form>

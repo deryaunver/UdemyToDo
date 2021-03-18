@@ -22,9 +22,9 @@
     </div>
 
     <div class="col-md-4 ">
-        <div class="card border border-primary shadow">
+        <div class="card ">
             <div class="card-header">
-                <h4 class="text-danger lead">Görev Bilgileri</h4>
+                <h4 class="text-danger text-center lead text-info font-italic font-weight-bold shadow-lg">Görev Bilgileri</h4>
             </div>
             <div class="card-body">
                 <h5 class="card-title">@Model.Ad</h5>
@@ -48,16 +48,17 @@
 
         @foreach (var item in (List<AppUserListViewModel>)ViewBag.Personeller)
         {
-
-            <div class="card border border-primary mb-3 p-2">
+            //mb - 3 pd-2
+            <div class="card mb-3 p-2">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="~/img/@item.Picture" class="card-img img-thumbnail shadow"
-                             style="height:13rem!important;" alt="@item.Name">
+                        
+                        <img src="~/img/@item.Picture" class="card-img "
+                             style="height:10rem!important;" alt="@item.Name">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">@item.Name @item.Surname</h5>
+                            <h5 class="card-title text-info font-weight-bold" style="text-decoration: underline">@item.Name.ToUpper() @item.Surname.ToUpper()</h5>
                             <p class="card-text">
                                 <getirGorevAppUserId app-user-id="@item.Id">
 

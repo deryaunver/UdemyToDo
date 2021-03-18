@@ -6,18 +6,19 @@
 
 @if (Model.Raporlar.Count > 0)
 {
-    <a class="btn btn-info mt-2">Excell 'de Görüntüle</a>
-    <table class="table table-hover table-sm mt-2">
+    <a asp-action="GetirExcel" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-success  my-2 mr-2 btn-sm"><i class="fas fa-file-excel mr-2"></i>Excel</a>
+    <a asp-action="GetirPdf" asp-route-id="@Model.Id"  target="_blank" class="btn btn-outline-danger my-2 mt-2 btn-sm"><i class="fas fa-file-pdf mr-2"></i>Pdf</a>
+    <table  class=" text-center table table-hover table-sm mt-2" >
         <tr>
-            <th colspan="2">@Model.AppUser.Name  @Model.AppUser.Surname personelinizin @Model.Ad yazmış olduğu raporlar</th>
+            <th  colspan="2">" @Model.AppUser.Name.ToUpper()  @Model.AppUser.Surname.ToUpper() " personelinizin @Model.Ad yazmış olduğu raporlar </th>
         </tr>
-        <tr>
+        <tr class="text-primary">
             <th>Tanim</th>
             <th>Detay</th>
         </tr>
         @foreach (var rapor in Model.Raporlar)
         {
-            <tr>
+            <tr >
                 <td>@rapor.Tanim</td>
                 <td>@rapor.Detay</td>
             </tr>
@@ -28,8 +29,8 @@
 }
 else
 {
-    <div class="border border-dark mt-2 text-center">
-        @Model.AppUser.Name @Model.AppUser.Surname personeliniz şuan da @Model.Ad
+    <div class="border border-dark mt-2 text-center text-danger">
+       "@Model.AppUser.Name.ToUpper() @Model.AppUser.Surname.ToUpper()" personeliniz şuan da @Model.Ad
         görevi üzerinde çalışıyor.Henüz bir rapor yazılmamış.
     </div>
 }
