@@ -1,11 +1,9 @@
-﻿@{ string active = string.Empty;
+﻿@model AppUserListViewModel
+@{ string active = string.Empty;
     if (TempData["Active"] != null)
     {
         active = TempData["Active"].ToString().ToLower();
     } }
-
-
-
 <!DOCTYPE html>
 <html lang="tr">
 
@@ -17,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>DOGO TECH</title>
+    <title>DOGO TECH PERSONEL</title>
 
     <!-- Bootstrap core CSS -->
     @*<link href="~/lib/bootswatch/bootstrap.min (2).css" rel="stylesheet" />*@
@@ -41,12 +39,9 @@
             <div class="sidebar-heading ">
                 <img src="~/img/dogo.png" />
             </div>
-            <div class="list-group list-group-flush ">
-                <a asp-action="Index" asp-controller="Gorev" class="list-group-item list-group-item-action    @(active=="gorev"?"active":"") "><i class="fas fa-tasks mr-2"></i>Görev İşlemleri</a>
-                <a asp-action="Index" asp-controller="Aciliyet" class="list-group-item list-group-item-action @(active=="aciliyet"?"active":"") "><i class="fas fa-clock mr-2"></i>Aciliyet İşlemleri</a>
-                <a asp-action="Index" asp-controller="IsEmri" class="list-group-item list-group-item-action  @(active=="isemri"?"active":"") "><i class="far fa-id-card mr-2"></i>İş Emirleri </a>
-                <a href="#" class="list-group-item list-group-item-action "><i class="fas fa-chart-pie mr-2"></i>Grafikler</a>
-                <a href="#" class="list-group-item list-group-item-action "> <i class="fas fa-chart-area mr-2"></i>İstatistikler</a>
+            <div class="list-group list-group-flush  ">
+                <a asp-action="Index" asp-controller="IsEmri" asp-route-id="@Model.Id"  class="list-group-item list-group-item-action @(active=="isemri"?"active":"")  "><i class="fas fa-arrow-alt-circle-down mr-2"></i>Gelen İş Emirleri</a>
+                <a href="#" class="list-group-item list-group-item-action "> <i class="fas fa-arrow-alt-circle-up mr-2"></i>Tamamladığım İşler</a>
                 <a href="#" class="list-group-item list-group-item-action  "><i class="fas fa-bell mr-2"></i>Bildirimler</a>
                 <a asp-action="Index" asp-controller="Profil" class="list-group-item list-group-item-action  @(active=="profil"?"active":"") "><i class="fas fa-user mr-2"></i>Profilim</a>
                 <a asp-area="" asp-action="CikisYap" asp-controller="Home" class="list-group-item list-group-item-action  "><i class="fas fa-sign-out-alt mr-2"></i>Çıkış Yap</a>
@@ -60,7 +55,7 @@
                 <button class="btn btn-outline-info btn-sm " id="menu-toggle"><i class="fas fa-exchange-alt mr-2"></i>MENÜ</button>
                 @*PERSONEL RESMİ İÇİN*@
 
-               
+                @await Component.InvokeAsync("Wrapper")
                 @*PERSONEL RESMİ İÇİN*@
 
                 @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

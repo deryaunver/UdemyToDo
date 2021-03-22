@@ -1,0 +1,42 @@
+﻿@model List<GorevListAllViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
+}
+
+@foreach (var gorev in Model)
+{
+    <div class="card border-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">@gorev.Ad</div>
+        <div class="card-body text-primary">
+            <h5 class="card-title">@gorev.Aciliyet.Tanim</h5>
+            <p class="card-text">@gorev.Aciklama</p>
+            <a href="#" class="btn btn-primary"><i class="fas fa-caret-down ml-2"></i>
+                Raporlara Git
+                <span class="badge badge-primary">@gorev.Raporlar.Count</span>
+            </a>
+            <a href="#" class="btn btn-primary">
+                Tamamlandı
+
+            </a>
+        </div>
+    </div>
+}
+@*@foreach(var gorev in Model) {
+<div class="card">
+    <h5 class="card-header">@gorev.Ad</h5>
+    <div class="card-body">
+        <h5 class="card-title">@gorev.Aciliyet.Tanim</h5>
+        <p class="card-text">@gorev.Aciklama</p>
+        <a href="#" class="btn btn-primary">
+            Raporlara Git
+            <span class="badge badge-primary">@gorev.Raporlar.Count</span>
+        </a>
+        <a href="#" class="btn btn-primary">
+            Tamamlandı
+
+        </a>
+    </div>
+</div>
+}*@
+

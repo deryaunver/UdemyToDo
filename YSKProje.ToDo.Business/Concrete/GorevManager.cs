@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using YSKProje.ToDo.Business.Interfaces;
 using YSKProje.ToDo.DataAccess.Concrete.EntityFrameworkCore.Repositories;
 using YSKProje.ToDo.DataAccess.Interfaces;
@@ -44,6 +46,11 @@ namespace YSKProje.ToDo.Business.Concrete
         public Gorev GetirRaporlarIdile(int id)
         {
             return _gorevDal.GetirRaporlarIdile(id);
+        }
+
+        public List<Gorev> GetirTumTablolarla(Expression<Func<Gorev, bool>> filter)
+        {
+            return _gorevDal.GetirTumTablolarla(filter);
         }
 
         public Gorev GetirIdile(int id)

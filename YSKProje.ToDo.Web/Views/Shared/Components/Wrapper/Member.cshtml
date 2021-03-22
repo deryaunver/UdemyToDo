@@ -1,4 +1,17 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model AppUserListViewModel
+@*<div class="collapse navbar-collapse" id="navbarsupportedcontent">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+            <a class="nav-link">        <img src="~/img/@Model.Picture" style="        height: 3rem !important;
+        border-radius: 50% ;" alt="@Model.Name" class="img-thumbnail" /> <span class="sr-only">(current)</span></a>
+        </li>
+    </ul>
+</div>*@
+<div class="collapse navbar-collapse" id="navbarsupportedcontent">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+            <a class="nav-link"><img src="~/img/@Model.Picture" style="        height: 3rem !important;
+                                      border-radius: 50% ;                                  " alt="@Model.Name" class="img-thumbnail" /> <span class="sr-only">(current)</span></a>
+        </li>
+    </ul>
+</div>
