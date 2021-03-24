@@ -1,17 +1,78 @@
 ﻿@model List<GorevListAllViewModel>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
+    int index = 0;
 }
 
 @foreach (var gorev in Model)
 {
-    <div class="card border-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">@gorev.Ad</div>
-        <div class="card-body text-primary">
+    index++;
+    <div class="card border-primary mb-3">
+        <div class="card">
+            <div class="card-header font-weight-bold ">@gorev.Ad</div>
+            <div class="card-body text-primary">
+                <h5 class="card-title text-danger font-weight-bold "><span class="text-info font-weight-bold">Aciliyet Durumu: </span>@gorev.Aciliyet.Tanim</h5>
+                <p class="card-text text-dark">@gorev.Aciklama</p>
+
+                <p class="text-right">
+                    @if (gorev.Raporlar.Count > 0)
+                    {
+                        <a class="btn btn-light btn-sm" data-toggle="collapse" href="#collapseExample-@index" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <i class="fas fa-caret-down ml-2"></i>
+                            Raporlara Git
+                            <span class="badge badge-dark">@gorev.Raporlar.Count</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <span class=" lead font-weight-bold font-italic d-block text-right mb-1"> Görevin üzerindeki ilerlemeleri rapor olarak bildir !!!</span>
+                        <a asp-action="EkleRapor" asp-route-id="@gorev.Id" class="btn-sm btn btn-light"><i class="fas fa-plus-circle mr-2"></i>Rapor Yaz</a>
+                    }
+
+
+                    <a href="#" class="btn btn-info btn-sm">
+                        <i class="fas fa-check"></i>
+                        Tamamlandı
+
+                    </a>
+                </p>
+                <div class="collapse" id="collapseExample-@index">
+                    <a asp-action="EkleRapor" asp-route-id="@gorev.Id" class="btn-sm btn btn-light mb-2"><i class="fas fa-plus-circle mr-2"></i>Rapor Yaz</a>
+                    <table class="table table-hover table-bordered table-sm ">
+                        <tr>
+                            <th>Tanım</th>
+                            <th>Detay</th>
+                            <th>İşlem</th>
+                        </tr>
+                        @foreach (var rapor in gorev.Raporlar)
+                        {
+                            <tr>
+                                <td> @rapor.Tanim </td>
+                                <td> @rapor.Detay </td>
+                                <td>
+                                    <a asp-action="GuncelleRapor" asp-route-id="@rapor.Id" class="btn btn-outline-warning btn-sm"><i class="far fa-edit mr-2"></i>Düzenle</a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+}
+@*@foreach(var gorev in Model) {
+    <div class="card">
+        <h5 class="card-header">@gorev.Ad</h5>
+        <div class="card-body">
             <h5 class="card-title">@gorev.Aciliyet.Tanim</h5>
             <p class="card-text">@gorev.Aciklama</p>
-            <a href="#" class="btn btn-primary"><i class="fas fa-caret-down ml-2"></i>
+            <a href="#" class="btn btn-primary">
                 Raporlara Git
                 <span class="badge badge-primary">@gorev.Raporlar.Count</span>
             </a>
@@ -21,22 +82,5 @@
             </a>
         </div>
     </div>
-}
-@*@foreach(var gorev in Model) {
-<div class="card">
-    <h5 class="card-header">@gorev.Ad</h5>
-    <div class="card-body">
-        <h5 class="card-title">@gorev.Aciliyet.Tanim</h5>
-        <p class="card-text">@gorev.Aciklama</p>
-        <a href="#" class="btn btn-primary">
-            Raporlara Git
-            <span class="badge badge-primary">@gorev.Raporlar.Count</span>
-        </a>
-        <a href="#" class="btn btn-primary">
-            Tamamlandı
-
-        </a>
-    </div>
-</div>
-}*@
+    }*@
 

@@ -1,9 +1,12 @@
-﻿@model AppUserListViewModel
+﻿@*@using YSKProje.ToDo.Web.Areas.Admin.Controllers*@
+
 @{ string active = string.Empty;
+
     if (TempData["Active"] != null)
     {
+ 
         active = TempData["Active"].ToString().ToLower();
-    } }
+            } }
 <!DOCTYPE html>
 <html lang="tr">
 
@@ -35,18 +38,19 @@
     <div class="d-flex" id="wrapper">
 
         <!-- Sidebar -->
-        <div class="border-right " id="sidebar-wrapper">
+        @await Component.InvokeAsync("Wrapper")
+        @*<div class="border-right " id="sidebar-wrapper">
             <div class="sidebar-heading ">
                 <img src="~/img/dogo.png" />
             </div>
             <div class="list-group list-group-flush  ">
-                <a asp-action="Index" asp-controller="IsEmri" asp-route-id="@Model.Id"  class="list-group-item list-group-item-action @(active=="isemri"?"active":"")  "><i class="fas fa-arrow-alt-circle-down mr-2"></i>Gelen İş Emirleri</a>
+                <a asp-action="Index" asp-controller="IsEmri"class="list-group-item list-group-item-action @(active=="isemri"?"active":"")  "><i class="fas fa-arrow-alt-circle-down mr-2"></i>Gelen İş Emirleri</a>
                 <a href="#" class="list-group-item list-group-item-action "> <i class="fas fa-arrow-alt-circle-up mr-2"></i>Tamamladığım İşler</a>
                 <a href="#" class="list-group-item list-group-item-action  "><i class="fas fa-bell mr-2"></i>Bildirimler</a>
                 <a asp-action="Index" asp-controller="Profil" class="list-group-item list-group-item-action  @(active=="profil"?"active":"") "><i class="fas fa-user mr-2"></i>Profilim</a>
                 <a asp-area="" asp-action="CikisYap" asp-controller="Home" class="list-group-item list-group-item-action  "><i class="fas fa-sign-out-alt mr-2"></i>Çıkış Yap</a>
             </div>
-        </div>
+        </div>*@
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
         <div id="page-content-wrapper">
@@ -55,34 +59,44 @@
                 <button class="btn btn-outline-info btn-sm " id="menu-toggle"><i class="fas fa-exchange-alt mr-2"></i>MENÜ</button>
                 @*PERSONEL RESMİ İÇİN*@
 
-                @await Component.InvokeAsync("Wrapper")
+                @*@await Component.InvokeAsync("Wrapper")*@
                 @*PERSONEL RESMİ İÇİN*@
-
+                <div class="collapse navbar-collapse" id="navbarsupportedcontent">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link">
+                        <img src="~/img/dogo.png" style="        height: 3rem !important;
+                                      border-radius: 50% ;
+                                  " class="img-thumbnail"  />      <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
                 @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    <div class="collapse navbar-collapse" id="navbarsupportedcontent">
-                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Dropdown
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>*@
+        <div class="collapse navbar-collapse" id="navbarsupportedcontent">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </div>*@
             </nav>
 
             <div class="container-fluid">

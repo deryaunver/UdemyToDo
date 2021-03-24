@@ -1,0 +1,37 @@
+﻿@model RaporAddViewModel
+@{
+    ViewData["Title"] = "EkleRapor";
+    Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
+}
+<div class="card text-dark border-info bg-light my-3 " >
+    <div class="card-header"><i class="fas fa-tasks mr-2"></i>@Model.Gorev.Ad</div>
+    <div class="card-body mr-2">
+        <h4 class="card-title font-weight-bold mr-2">@Model.Gorev.Aciliyet.Tanim</h4>
+        <p class="card-text mr-2">@Model.Gorev.Aciklama</p>
+    </div>
+</div>
+<form class=" p-3" asp-action="EkleRapor"method="post">
+    <input type="hidden"asp-for="@Model.GorevId"/>
+    <div class="form-group text-black-50 font-italic font-weight-bold">
+        <label asp-for="@Model.Tanim"></label>
+        <span asp-validation-for="@Model.Tanim" class="text-danger"></span>
+        <input  asp-for="@Model.Tanim" class="form-control"></input>
+    </div>
+    <div class="form-group text-black-50 font-italic font-weight-bold">
+        <label asp-for="@Model.Detay"></label>
+        <span asp-validation-for="@Model.Detay" class="text-danger"></span>
+        <textarea type="text" asp-for="@Model.Detay" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <a asp-action="Index" asp-controller="IsEmri"class="btn btn-outline-warning btn-sm"><i class="fas fa-chevron-circle-left mr-2"></i>Vazgeç</a>
+        <button  type="submit"class="btn btn-outline-info btn-sm"><i class="fas fa-check mr-2"></i>Kaydet</button>
+    </div>
+
+</form>
+
+@section JavaScript{
+    <script src="~/lib/jqueryValidate/jquery.validate.min.js"></script>
+    <script src="~/lib/jqueryUnob/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
