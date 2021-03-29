@@ -9,6 +9,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Customer\Controllers\" />
+    <Folder Include="Areas\Customer\Models\" />
+    <Folder Include="Areas\Customer\Views\Shared\" />
     <Folder Include="Areas\Member\Models\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\css\" />
